@@ -32,14 +32,13 @@
             <div class="filter-content collapse show" id="collapse_1" style="">
                 <div class="card-body">
                     
+                    
                     <ul class="list-menu">
-                    <li><a href="#">People  </a></li>
-                    <li><a href="#">Watches </a></li>
-                    <li><a href="#">Cinema  </a></li>
-                    <li><a href="#">Clothes  </a></li>
-                    <li><a href="#">Home items </a></li>
-                    <li><a href="#">Animals</a></li>
-                    <li><a href="#">People </a></li>
+                        <li><a href="{% url 'store' %}">All Products</a></li>
+                        {% for category in links %}
+                    <li><a href="{{ category.get_url }}">{{category.category_name}}</a></li>
+                    {% endfor %}
+                    
                     </ul>
     
                 </div> <!-- card-body.// -->
@@ -92,25 +91,25 @@
                       <label>Min</label>
                       <!-- <input class="form-control" placeholder="$0" type="number"> -->
                           <select class="mr-2 form-control">
-                            <option value="0">$0</option>
-                            <option value="50">$50</option>
-                            <option value="100">$100</option>
-                            <option value="150">$150</option>
-                            <option value="200">$200</option>
-                            <option value="500">$500</option>
-                            <option value="1000">$1000</option>
+                            <option value="0">Rs.0</option>
+                            <option value="50">Rs.50</option>
+                            <option value="100">Rs.100</option>
+                            <option value="150">Rs.150</option>
+                            <option value="200">Rs.200</option>
+                            <option value="500">Rs.500</option>
+                            <option value="1000">Rs.1000</option>
                         </select>
                     </div>
                     <div class="form-group text-right col-md-6">
                       <label>Max</label>
                           <select class="mr-2 form-control">
-                            <option value="50">$50</option>
-                            <option value="100">$100</option>
-                            <option value="150">$150</option>
-                            <option value="200">$200</option>
-                            <option value="500">$500</option>
-                            <option value="1000">$1000</option>
-                            <option value="2000">$2000+</option>
+                            <option value="50">Rs.50</option>
+                            <option value="100">Rs.100</option>
+                            <option value="150">Rs.150</option>
+                            <option value="200">Rs.200</option>
+                            <option value="500">Rs.500</option>
+                            <option value="1000">Rs.1000</option>
+                            <option value="2000">Rs.2000+</option>
                         </select>
                     </div>
                     </div> <!-- form-row.// -->
@@ -137,12 +136,12 @@
             <figure class="card card-product-grid">
                 <div class="img-wrap"> 
                     
-                    <img src="{{product.images.url}}">
+                    <a href="{{product.get_url}}"><img src="{{product.images.url}}"></a>
                     
                 </div> <!-- img-wrap.// -->
                 <figcaption class="info-wrap">
                     <div class="fix-height">
-                        <a href="./product-detail.html" class="title">{{product.product_name}}</a>
+                        <a href="{{product.get_url}}" class="title">{{product.product_name}}</a>
                         <div class="price-wrap mt-2">
                             <span class="price">Rs.{{product.price}}</span>
                             
